@@ -6,57 +6,46 @@ The primary object is a **customer-owned bicycle moving through an agreement abo
 
 ## Primary lifecycle
 
-```text
-INTAKE
-  Customer identity
-  Bike details
-  Requested service
-  Intake photos
-  Initial authorization
-      |
-      v
-INSPECTION
-  Mechanic evaluates bike
-  Findings documented
-  Existing service reviewed
-  Additional work proposed
-      |
-      v
-CUSTOMER DECISION
-  Finding communicated
-  Proposed-service snapshot
-  Approved or declined
-      |
-      v
-AUTHORIZED WORK
-  Work authorized at intake
-  Approved additional work
-  Service lines represent the work commitment
-  Mechanic completes work
-      |
-      v
-FINAL QC
-  Final once-over
-  Test ride result / Not required
-  Finished-bike photo
-      |
-      v
-READY FOR CUSTOMER
-  Customer handoff
-  Completed-work summary
-  Customer communication
-      |
-      v
-WAITING FOR PICKUP
-  Customer has been notified
-  Bike remains in shop custody
-  Pickup / delivery obligation remains
-      |
-      v
-PAYMENT -> CLOSED
-  Payment recorded
-  Bike handed back
-  Repair history retained
+```mermaid
+flowchart LR
+    A["1. Intake<br/>Customer identity<br/>Bike details<br/>Requested service<br/>Intake photos<br/>Initial authorization"]
+    B["2. Inspection<br/>Mechanic evaluates bike<br/>Findings documented<br/>Existing service reviewed<br/>Additional work proposed"]
+    C{"3. Customer Decision<br/>Finding communicated<br/>Proposal snapshot<br/>Approve or decline"}
+    D["4. Authorized Work<br/>Authorized-at-intake work<br/>Approved additional work<br/>Service lines = work commitment<br/>Mechanic completes work"]
+    E["5. Final QC<br/>Final once-over<br/>Test ride / Not required<br/>Finished-bike photo"]
+    F["6. Ready for Customer<br/>Open customer handoff<br/>Completed-work summary<br/>Customer communication"]
+    G["7. Waiting for Pickup<br/>Customer notified<br/>Bike remains in shop custody<br/>Pickup / delivery obligation"]
+    H["8. Payment → Closed<br/>Payment recorded<br/>Bike handed back<br/>Repair history retained"]
+
+    A --> B --> C
+    C -->|Approved| D
+    C -->|Declined additional work| D
+    D --> E --> F --> G --> H
+```
+
+The decision stage does not imply that all work waits for customer approval. Work already authorized at intake can remain authorized; the decision applies to additional work proposed after inspection.
+
+## Persistent product model
+
+These are not sequential screens. They are information that should remain associated with the repair as the bicycle moves through the lifecycle.
+
+```mermaid
+flowchart TB
+    JOB["SERVICE JOB / BICYCLE LIFECYCLE"]
+
+    CUSTOMER["Customer<br/>Identity<br/>Contact information<br/>Communication & approvals"]
+    BIKE["Bicycle<br/>Make / model / color<br/>Description<br/>Condition"]
+    SERVICE["Service Commitment<br/>Service lines<br/>Scope & price<br/>Authorization origin"]
+    FINDINGS["Findings & Decisions<br/>Mechanic diagnosis<br/>Proposal snapshot<br/>Approved / declined"]
+    EVIDENCE["Evidence<br/>Intake / finished photos<br/>QC state<br/>Test ride"]
+    STATUS["Status & Obligation<br/>Where is the bike?<br/>Who acts next?<br/>What must happen next?"]
+
+    JOB --- CUSTOMER
+    JOB --- BIKE
+    JOB --- SERVICE
+    JOB --- FINDINGS
+    JOB --- EVIDENCE
+    JOB --- STATUS
 ```
 
 ## Information that persists across the journey
