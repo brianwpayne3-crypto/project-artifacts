@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BCBG Service Intake — Product IA</title>
+<style>
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;background:#f4f1e9;color:#20211f;line-height:1.5}.wrap{max-width:1180px;margin:auto;padding:48px 24px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#777}h1{font-size:36px;margin:6px 0 10px}.intro{max-width:780px;color:#555;margin-bottom:30px}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stage{background:white;border:1px solid #d5d1c7;border-radius:12px;padding:16px;min-height:145px}.stage.decision{border-style:dashed}.stage.handoff{background:#ebe8df}.num{font-size:11px;font-weight:800;color:#888}.stage h2{font-size:17px;margin:8px 0}.stage ul,.persist ul,.questions ul{padding-left:18px;margin:0;color:#666;font-size:13px}.section{margin-top:34px}.persist{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.persist article{border-top:3px solid #777;padding:10px 3px}.persist h3{font-size:14px;margin:0 0 5px}.questions{margin-top:36px;padding-top:24px;border-top:1px solid #ccc;display:grid;grid-template-columns:1fr 2fr;gap:20px}.questions h2{font-size:18px;margin:0}.note{margin-top:30px;color:#777;font-size:12px}.core{margin:28px 0;padding:20px;border-left:4px solid #555;background:#ebe8df;font-weight:600}@media(max-width:850px){.flow{grid-template-columns:repeat(2,1fr)}.persist{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.wrap{padding:28px 16px}.flow,.persist,.questions{grid-template-columns:1fr}h1{font-size:30px}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="eyebrow">Bucks County Bike Garage · Service Workflow</div>
+<h1>Service Intake — Product Information Architecture</h1>
+<p class="intro">A designer-facing map of the mechanic's journey through a repair. The primary object is a customer-owned bicycle moving through an agreement about what work should be done, the work itself, and a safe handoff back to the customer.</p>
+<section class="flow">
+<article class="stage"><div class="num">01</div><h2>Intake</h2><ul><li>Customer identity</li><li>Bike details</li><li>Requested service</li><li>Intake photos</li><li>Initial authorization</li></ul></article>
+<article class="stage"><div class="num">02</div><h2>Inspection</h2><ul><li>Mechanic evaluates bike</li><li>Findings documented</li><li>Existing service reviewed</li><li>Additional work proposed</li></ul></article>
+<article class="stage decision"><div class="num">03</div><h2>Customer Decision</h2><ul><li>Finding communicated</li><li>Proposal snapshot</li><li>Approved or declined</li></ul></article>
+<article class="stage"><div class="num">04</div><h2>Authorized Work</h2><ul><li>Intake-authorized work</li><li>Approved additional work</li><li>Service lines = work commitment</li><li>Mechanic completes work</li></ul></article>
+<article class="stage"><div class="num">05</div><h2>Final QC</h2><ul><li>Final once-over</li><li>Test ride / Not required</li><li>Finished-bike photo</li></ul></article>
+<article class="stage handoff"><div class="num">06</div><h2>Ready for Customer</h2><ul><li>Customer handoff</li><li>Completed-work summary</li><li>Customer communication</li></ul></article>
+<article class="stage handoff"><div class="num">07</div><h2>Waiting for Pickup</h2><ul><li>Customer notified</li><li>Bike remains in shop custody</li><li>Pickup / delivery obligation</li></ul></article>
+<article class="stage handoff"><div class="num">08</div><h2>Payment → Closed</h2><ul><li>Payment recorded</li><li>Bike handed back</li><li>Repair history retained</li></ul></article>
+</section>
+<div class="core">At every stage: Where is the bicycle? Who owes the next action? What must happen before the job advances?</div>
+<section class="section"><div class="eyebrow">Persistent information</div><h2>What survives the whole journey</h2><div class="persist">
+<article><h3>Customer</h3><ul><li>Identity + contact</li><li>Communication + approvals</li></ul></article>
+<article><h3>Bicycle</h3><ul><li>Make / model / color</li><li>Description + condition</li></ul></article>
+<article><h3>Service commitment</h3><ul><li>Service lines</li><li>Scope, price, authorization</li></ul></article>
+<article><h3>Findings & decisions</h3><ul><li>Mechanic diagnosis</li><li>Proposal snapshot</li><li>Approved / declined</li></ul></article>
+<article><h3>Evidence</h3><ul><li>Photos</li><li>QC + test ride</li><li>Handoff record</li></ul></article>
+<article><h3>Status & obligation</h3><ul><li>Lifecycle state</li><li>Next actor</li><li>Required next event</li></ul></article>
+</div></section>
+<section class="questions"><h2>Questions for design critique</h2><ul><li>Does this lifecycle match the mechanic's mental model, or expose too much process?</li><li>What should remain continuously visible as the mechanic moves between stages?</li><li>Are Finding, Customer Decision, and Service Line understandable concepts—or implementation concepts leaking into the product?</li><li>Should the interface orient primarily around the physical bike, the customer, or the service job?</li><li>Which transitions need explicit confirmation, and which should feel nearly invisible?</li><li>What should be immediately obvious when reopening a bike after several days?</li></ul></section>
+<p class="note">Product IA only. Technical architecture and the working application repository are intentionally omitted. No customer or private operational data is included.</p>
+</main></body></html>
